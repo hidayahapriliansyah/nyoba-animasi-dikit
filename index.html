@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @keyframes fadeIn {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0%);
+      }
+    }
+
+    .new-row {
+      animation: fadeIn 1s;
+      background-color: aliceblue;
+    }
+  </style>
+</head>
+
+<body>
+  <table id="visitor-table">
+    <thead>
+      <tr>
+        <th>Nama</th>
+        <th>Waktu Masuk</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data pengunjung akan ditambahkan di sini -->
+    </tbody>
+  </table>
+
+  <script>
+    function addVisitor(name, entryTime) {
+      const tableBody = document.querySelector('#visitor-table tbody');
+      const newRow = document.createElement('tr');
+      newRow.className = 'new-row'; // Terapkan kelas animasi
+
+      newRow.innerHTML = `
+        <td>${name}</td>
+        <td>${entryTime}</td>
+      `;
+
+      // Masukkan elemen baru ke bagian atas tabel
+      tableBody.insertBefore(newRow, tableBody.firstChild);
+    }
+
+    // Contoh pemanggilan fungsi
+    setInterval(() => {
+      addVisitor('Nama Pengunjung Baru', (new Date()).toLocaleTimeString());
+    }, 1000);
+  </script>
+</body>
+
+</html>
